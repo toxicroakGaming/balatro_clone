@@ -17,4 +17,6 @@ public class Joker {
     private int effect;
     //how much does it sell for?
     private int sell;
+    //what rarity?
+    private int rarity;
 }
