@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 public class Player {
     private int deckSize;
     private int money;
@@ -23,11 +24,15 @@ public class Player {
             cur_hand.add(c);
         }
         System.out.println("Cur hand: ");
+        int p = 0;
         for(Card cur : cur_hand){
-            System.out.println(cur.get_card());
+            p++;
+            System.out.println(p + ": " + cur.get_card());
         }
         System.out.println();
         System.out.println();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Pick cards ");
     }
     public Card get_rand_card(ArrayList<Card> cur_deck){
         Random r = new Random();
