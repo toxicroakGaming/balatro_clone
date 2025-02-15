@@ -65,7 +65,7 @@ public class Card {
         return face;
     }
     //returns the card being played
-    public String get_card(){
+    public String toString(){
         String s = "";
         if(value == 50){
             return "Stone";

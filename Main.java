@@ -19,7 +19,7 @@ class Main{
         //just a test that will be deleted later
         System.out.println("size of the deck " + mainDeck.size());
         for(Card c : mainDeck){
-            System.out.println(c.get_card());
+            System.out.println(c.toString());
         }
         System.out.println();
         //this is the main game loop

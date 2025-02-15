@@ -27,32 +27,33 @@ public class Player {
      * This is where the majority of stuff is happening.
      * This method IS NOT the shop, but handles each round
      * enters loop until either no hands or boss blind is defeated
+     * this function is here as a backup in case things fail
      */
     public void do_turn(int chips, int money){
-        int chips_earned = 0;
-        int hand_cur = num_hands;
-        int disc_cur = num_disc;
-        ArrayList<Card> cur_deck = new ArrayList<Card>(deck);
-        while(chips_earned < chips){
-            ArrayList<Card> cur_hand = new ArrayList<Card>();
-            int hand_size = 8;
-            for(int i = 0; i < hand_size; i++){
-                Card c = get_rand_card(cur_deck);
-                cur_deck.remove(c);
-                cur_hand.add(c);
+            int chips_earned = 0;
+            int hand_cur = num_hands;
+            int disc_cur = num_disc;
+            ArrayList<Card> cur_deck = new ArrayList<Card>(deck);
+            while(chips_earned < chips){
+                ArrayList<Card> cur_hand = new ArrayList<Card>();
+                int hand_size = 8;
+                for(int i = 0; i < hand_size; i++){
+                    Card c = get_rand_card(cur_deck);
+                    cur_deck.remove(c);
+                    cur_hand.add(c);
+                }
+                System.out.println("Cur hand: ");
+                int l = 0;
+                for(Card cur : cur_hand){
+                    l++;
+                    System.out.println(l + ": " + cur.toString());
+                }
+                System.out.println();
+                System.out.println();
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Pick cards ");
+                System.out.println("Deck size " + cur_deck.size() + " / " + deck.size());
             }
-            System.out.println("Cur hand: ");
-            int p = 0;
-            for(Card cur : cur_hand){
-                p++;
-                System.out.println(p + ": " + cur.get_card());
-            }
-            System.out.println();
-            System.out.println();
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Pick cards ");
-            System.out.println("Deck size " + cur_deck.size() + " / " + deck.size());
-        }
     }
 
     /* 
