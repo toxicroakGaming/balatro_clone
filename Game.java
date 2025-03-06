@@ -141,8 +141,13 @@ public class Game {
      * This is where the scoring happens
      */
     public int score_hand(ArrayList<Card> cur_hand){
-        
-        return 0;
+        String hand = get_hand_type(cur_hand);
+        int chips = hand_chips.get(hand);
+        int mult = hand_mults.get(hand);
+        for(Card c : cur_hand){
+            chips += c.get_value();
+        }
+        return chips * mult;
     }
 
 
