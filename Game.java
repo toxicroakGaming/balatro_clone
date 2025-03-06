@@ -145,11 +145,134 @@ public class Game {
         return 0;
     }
 
+
+    void score_planet(String card_name, int chips_add, int mult_add){
+        if(hand_chips.contains(card_name) && hand_mults.contains(card_name)){
+            hand_chips.put(card_name, hand_chips.get(card_name) + chips_add);
+            hand_mults.put(card_name, hand_mult.get(card_name) + mult_add);
+            System.out.println("Added " + chips_add + " chips and " + mult_add + " mult to " + card_name);
+        }
+        else{
+            System.out.println("Hand type does not exist");
+        }
+    }
     /*
-     * we will find out what hand the player has selected with this function
+     * we will find out what hand the player has selected with this function.
+       This method is highly unoptimized, but at the end, I will come back and
+       possibly edit it.
+       Not terribly important this is optimized since cur_hand.size() will be
+       five or less
      */
     public String get_hand_type(ArrayList<Card> cur_hand){
-        
+        //This had a bad complexity maybe, but keep in mind that this is
+        //on something the size of 5 every time
+        HashMap<Integer, Integer> occurances_num = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> occurances_suit = new HashMap<Integer, Integer>();
+        //get the number of times a number occurs 
+        for(Card c : cur_hand){
+            int i = c.get_value < 10 ? c.get_value : c.get_face;
+            if(occurances.contains(i)){
+                occurances.put(i, ++occurances.get(i));
+            }
+            else{
+                occurances.put(i, 1);
+            }
+            //get number of times cards of apecific suits occur
+            int suit = c.get_suit();
+            if(occurances_suit.contains(suit)){
+                occurances_suit.put(suit, ++occurances.get(suit));
+            }
+            else{
+                occurances_suit.put(suit, 1);
+            }
+        }
+        //If there is no wild card in our stuff, add it
+        if(!(occurances.suit.contains(5))){
+            occurances_suit.put(5, 1)
+        }
+        //determine the number metrics
+        //number of _ of a kinds
+        //is there a flush?
+        int num_pairs = 0;
+        int num_three_kind = 0;
+        int straight = 0;
+        int num_in_a_row = 0;
+        int cur_num = 0
+        int num_four = 0;
+        int num_five = 0;
+        for(int occ : occurances_num.keyset()){
+            int current = occurances_num.get(occ);
+            if(cur_num == current - 1){
+                ++num_in_a_row;
+            }
+            else{
+                num_in_a_row = 0;
+            }
+            if(current > 1){
+                ++num_pairs;
+            }
+            if(current > 2){
+                ++num_three_kind;
+            }
+            if(current > 3){
+                ++num_four;
+            }
+            if(current > 4){
+                ++num_five;
+            }
+            cur_num = current;
+        }
+        if(num_in_a_row == 5){
+            ++straight;
+        }
+        //determine flush metric
+        int flush = 0;
+        for(int s : occurances_suit){
+            int num_suit = occurances_suit.get(s);
+            if(s != 5){
+                num_suit += occurances_suit.get(5);
+            }
+            if(num_suit == 5){
+                ++flush;
+            }
+        }
+        //this is where we will return the hand type
+        //it is in order by precedence, the higher/overlap ones are above
+        //those with dependancies
+        if(flush > 0 && num_five > 0){
+            return "Flush Five";
+        }
+        if(num_pairs > 0 && num_three_kind > 0 && flush){
+            return "Flush House";
+        }
+        if(num_five > 0){
+            return "Five of a Kind";
+        }
+        //royal flush is TBD on implementation
+        if(staight > 0 && flush > 0){
+            return "Straight Flush";
+        }
+        if(num_four > 0){
+            return "Four of a Kind";
+        }
+        if(num_three_kind > 0 && num_pairs > 1){
+            return "Full House";
+        }
+        if(flush > 0){
+            return "Flush";
+        }
+        if(straight > 0){
+            return "Straight";
+        }
+        if(num_three_kind > 0){
+            return "Three of a Kind";
+        }
+        if(num_pairs > 1){
+            return "Two Pair";
+        }
+        if(num_pairs > 0){
+            return "Pair";
+        }
         return "High Card";
     }
 }

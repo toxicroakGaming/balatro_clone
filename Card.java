@@ -26,10 +26,12 @@ public class Card {
     //3 holo
     //4 stone
     private int effect;
+    //POSSIBLE UPDATE: MAKE this a "card type"
+    //meaning that it will just be numeric and face will be 11-13
     //0 if not face
-    //1 for jack
-    //2 for queen
-    //3 for king
+    //11 for jack
+    //12 for queen
+    //13 for king
     private int face;
     //the types in an arraylist
     private ArrayList<String> types;
@@ -63,6 +65,10 @@ public class Card {
     //return if face or not
     public int get_face(){
         return face;
+    }
+
+    public int get_suit(){
+        return suit;
     }
     //returns the card being played
     public String toString(){

@@ -11,7 +11,7 @@ class Main{
             }
         }
         //add face cards
-        for(int face = 1; face < 4; face++){
+        for(int face = 11; face < 14; face++){
             for(int suit = 0; suit < 4; ++suit){
                 mainDeck.add(new Card (10, suit, 0, 0, face));
             }
