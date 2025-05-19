@@ -1,25 +1,10 @@
 # balatro_clone
-This is gonna be a clone of balatro. more terminal based in starting updates, but might update to have a GUI later on
+THIS PROJECT IS UNDER RENNOVATION. A NEW VERSION WILL BE UPLOADED ONCE THE PLANNING IS DONE
+planning can be found here:
+https://docs.google.com/presentation/d/1g5RIur4inbFQZe3a8zv47m9lrEESHvLJqN0-u6QI3ZI/edit?usp=sharing
 
-This is development process:
-
-Get the main card logic working (this is where this stands)
-
-get jokers to interact with cards
-
-get the effects wokring on both jokers and cards
-
-add in packs to add cards
-
-tarots
-
-planets
-
-vouchers
-
-blind health and skip effects
-
-boss blinds
+It will start through the terminal and move up towards visual approaches. 
+There will be a website associated with the project as well.
 
 I am not affiliated with the original creator of Balatro nor do I
 claim to be. This is just for fun and is not being sold for money
